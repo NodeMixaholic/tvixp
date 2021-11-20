@@ -12,14 +12,14 @@ client.on('ready', () => {
 
 client.on('message', function(message) {
     let cmd = `${prefix}${message.content}`
-    if (cmd === '$getMyXP') {
+    if (cmd === `${prefix}getMyXP`) {
         let dbEntry = baseDB.get(`${message.author.id}`)
         try {
             dbEntry.on((xp) => { message.channel.send(`${xp} XP`) });
         } catch {
             message.channel.send("0 XP")
         }
-    } else if (cmd === '$addXP') {
+    } else if (cmd === `${prefix}addXP`) {
         let splitCmd = cmd.split(' ')
         let uid = splitCmd[1]
         let newXP = Number(splitCmd[2])
@@ -34,7 +34,7 @@ client.on('message', function(message) {
         } else {
             message.channel.send("You are not able to kick members, thus you shall not be able to set XP.")
         }
-    } else if (cmd === "$help") {
+    } else if (cmd === `${prefix}help`) {
         message.channel.send(`Commands:
         $getMyXP - gets your XP value
         $addXP *id (not nick/tag)* *number* - adds XP to target user id in database.`)
