@@ -1,8 +1,9 @@
 const { Client, Intents, Permissions } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const GUN = require('gun/gun');
+let gun = new GUN();
 const prefix = "$"
-const token = "token" //REPLACE ME WITH YOUR TOKEN
+const token = "replaceme" //REPLACE ME WITH YOUR TOKEN
 const groupName = "theVortexImperium" //replace me with your group name, snake case to make i teasier
 let baseDB = gun.get('thesimplestxpbotintheentireuniverse').get(groupName);
 client.on('ready', () => {
