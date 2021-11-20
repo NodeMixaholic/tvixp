@@ -1,0 +1,23 @@
+{
+  "name": "tvi-xpbot",
+  "version": "1.0.0",
+  "description": "Simple xp bot for The Vortex Imperium.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm i && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodemixaholic/tvixp.git"
+  },
+  "author": "Samuel Lord",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodemixaholic/tvixp/issues"
+  },
+  "homepage": "https://github.com/nodemixaholic/tvixp#readme",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "gun": "^0.2020.1235"
+  }
+}
