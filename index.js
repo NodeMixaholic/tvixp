@@ -22,17 +22,22 @@ client.on('message', function(message) {
     } else if (cmd === '$addXP') {
         let splitCmd = cmd.split(' ')
         let uid = splitCmd[1]
-        let xp = Number(splitCmd[2])
+        let newXP = Number(splitCmd[2])
         if (message.author.fetchFlags(Permissions.FLAGS.KICK_MEMBERS) || message.author.fetchFlags(Permissions.FLAGS.ADMINISTRATOR)) { 
             let dbEntry = baseDB.get(`${uid}`)
         try {
-            dbEntry.put(xp)
+            dbEntry.on((xp) => { dbEntry.put(xp + newXP) });
         } catch {
-            message.channel.send("Error while setting XP!")
+            dbEntry.put(newXP)
+            message.channel.send("Error while setting XP! Reverting to the newXP value...")
         }
         } else {
             message.channel.send("You are not able to kick members, thus you shall not be able to set XP.")
         }
+    } else if (cmd === "$help") {
+        message.channel.send(`Commands:
+        $getMyXP - gets your XP value
+        $addXP *id (not nick/tag)* *number* - adds XP to target user id in database.`)
     }
 });
 
